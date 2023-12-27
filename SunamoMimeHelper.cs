@@ -1,3 +1,5 @@
+namespace SunamoMime;
+
 public class SunamoMimeHelper
 {
     private static readonly Dictionary<string, List<byte>> my4 = new();

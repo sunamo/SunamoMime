@@ -1,3 +1,5 @@
+
+namespace SunamoMime;
 public class TranslateAble
 {
     

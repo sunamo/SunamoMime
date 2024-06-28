@@ -1,3 +1,5 @@
+
+namespace SunamoMime;
 using System.Diagnostics;
 using System.Text;
 

@@ -1,4 +1,4 @@
-namespace SunamoMime;
+namespace SunamoMime._sunamo.SunamoXlfKeys;
 
 
 

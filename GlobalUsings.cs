@@ -6,6 +6,11 @@ global using FileSignatures;
 global using System.Text;
 global using System.Collections.Generic;
 global using System.Collections;
-
 global using System.Diagnostics.CodeAnalysis;
 global using System.Reflection;
+global using SunamoMime;
+global using SunamoMime._sunamo.SunamoStringGetLines;
+global using SunamoMime._sunamo.SunamoValues;
+global using SunamoMime._sunamo.SunamoXlfKeys;
+global using SunamoMime._sunamo.SunamoExceptions.OnlyInSE;
+global using SunamoMime._sunamo.SunamoExceptions._AddedToAllCsproj;

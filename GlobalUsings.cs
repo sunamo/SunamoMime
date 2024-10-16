@@ -5,7 +5,7 @@ global using System.IO;
 global using FileSignatures;
 global using System.Text;
 global using System.Collections;
-global using SunamoMime._sunamo.SunamoValues;
+global using SunamoMime;
 global using SunamoMime._sunamo.SunamoExceptions;
 global using System.Diagnostics;
 global using System.Diagnostics.CodeAnalysis;

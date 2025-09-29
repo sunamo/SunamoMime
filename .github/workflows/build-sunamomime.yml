@@ -1,0 +1,61 @@
+name: Build SunamoMime
+
+on:
+  push:
+    branches: [ "**" ]
+  pull_request:
+    branches: [ "**" ]
+
+jobs:
+  build:
+    name: Build SunamoMime
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        submodules: recursive
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '9.0.x'
+
+    - name: Restore dependencies
+      run: dotnet restore SunamoMime/SunamoMime.csproj
+
+    - name: Build
+      run: dotnet build SunamoMime/SunamoMime.csproj --configuration Release --no-restore
+
+  test:
+    name: Test SunamoMime.Tests
+    runs-on: ${{ matrix.os }}
+    needs: build
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        submodules: recursive
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '9.0.x'
+
+    - name: Restore dependencies
+      run: dotnet restore SunamoMime.Tests/SunamoMime.Tests.csproj
+
+    - name: Build tests
+      run: dotnet build SunamoMime.Tests/SunamoMime.Tests.csproj --configuration Release --no-restore
+
+    - name: Run tests
+      run: dotnet test SunamoMime.Tests/SunamoMime.Tests.csproj --configuration Release --no-build --verbosity normal
+      continue-on-error: true

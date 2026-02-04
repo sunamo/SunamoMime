@@ -1,24 +1,36 @@
 namespace SunamoMime;
 
+/// <summary>
+/// Helper class for determining MIME types and file formats from byte arrays.
+/// </summary>
 public class SunamoMimeHelper
 {
-    private static readonly Dictionary<string, List<byte>> my4 = new();
+    private static readonly Dictionary<string, List<byte>> mimeSignatures = new();
 
+    /// <summary>
+    /// Initializes known MIME type signatures.
+    /// Currently supports: WEBP format.
+    /// </summary>
     public static void Init()
     {
-        my4.Add("webp", new List<byte>(new byte[] { 82, 73, 70, 70 }));
+        mimeSignatures.Add("webp", new List<byte>(new byte[] { 82, 73, 70, 70 }));
     }
 
-    public static string FileType(byte[] b)
+    /// <summary>
+    /// Determines the file type from a byte array by analyzing file signatures.
+    /// </summary>
+    /// <param name="bytes">The byte array containing file data to analyze.</param>
+    /// <returns>The file extension corresponding to the detected file format.</returns>
+    public static string FileType(byte[] bytes)
     {
-        var f4 = b.Take(4);
-        foreach (var item in my4)
-            if (f4.SequenceEqual(item.Value))
-                return item.Key;
+        var firstFourBytes = bytes.Take(4);
+        foreach (var signature in mimeSignatures)
+            if (firstFourBytes.SequenceEqual(signature.Value))
+                return signature.Key;
 
         FileFormatInspector inspector = new();
-        MemoryStream stream = new(b);
-        var format = inspector.DetermineFileFormat(stream);
-        return format.Extension;
+        MemoryStream memoryStream = new(bytes);
+        var format = inspector.DetermineFileFormat(memoryStream);
+        return format?.Extension ?? string.Empty;
     }
 }

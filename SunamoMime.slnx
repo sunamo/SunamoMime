@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="SunamoMime.Tests\\SunamoMime.Tests.csproj" />
+  <Project Path="RunnerMime\\RunnerMime.csproj" />
+  <Project Path="SunamoMime\SunamoMime.csproj" />
+</Solution>

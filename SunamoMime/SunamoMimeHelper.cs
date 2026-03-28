@@ -19,17 +19,17 @@ public class SunamoMimeHelper
     /// <summary>
     /// Determines the file type from a byte array by analyzing file signatures.
     /// </summary>
-    /// <param name="bytes">The byte array containing file data to analyze.</param>
+    /// <param name="array">The byte array containing file data to analyze.</param>
     /// <returns>The file extension corresponding to the detected file format.</returns>
-    public static string FileType(byte[] bytes)
+    public static string FileType(byte[] array)
     {
-        var firstFourBytes = bytes.Take(4);
+        var firstFourBytes = array.Take(4);
         foreach (var signature in mimeSignatures)
             if (firstFourBytes.SequenceEqual(signature.Value))
                 return signature.Key;
 
         FileFormatInspector inspector = new();
-        MemoryStream memoryStream = new(bytes);
+        MemoryStream memoryStream = new(array);
         var format = inspector.DetermineFileFormat(memoryStream);
         return format?.Extension ?? string.Empty;
     }

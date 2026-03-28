@@ -1,21 +1,21 @@
 # SunamoMime
 
-For processing MIME types
+A .NET library for determining MIME types and file formats from byte arrays.
 
 ## Overview
 
-SunamoMime is part of the Sunamo package ecosystem, providing modular, platform-independent utilities for .NET development.
+SunamoMime is part of the Sunamo package ecosystem, providing modular, platform-independent utilities for .NET development. It uses file signature analysis (magic bytes) with built-in WEBP detection and delegates to [FileSignatures](https://github.com/neilharvey/FileSignatures) for other formats.
 
 ## Main Components
 
 ### Key Classes
 
-- **SunamoMimeHelper**
+- **SunamoMimeHelper** - Helper class for determining MIME types and file formats from byte arrays.
 
 ### Key Methods
 
-- `Init()`
-- `FileType()`
+- `Init()` - Initializes known MIME type signatures.
+- `FileType(byte[] array)` - Determines the file type from a byte array by analyzing file signatures.
 
 ## Installation
 
@@ -25,16 +25,14 @@ dotnet add package SunamoMime
 
 ## Dependencies
 
-- **FileSignatures** (v5.1.1)
-- **Microsoft.Extensions.Logging.Abstractions** (v9.0.3)
+- **FileSignatures** (v6.1.1)
+- **Microsoft.Extensions.Logging.Abstractions** (v10.0.2)
 
 ## Package Information
 
 - **Package Name**: SunamoMime
-- **Version**: 25.3.29.1
-- **Target Framework**: net9.0
+- **Target Frameworks**: net10.0;net9.0;net8.0
 - **Category**: Platform-Independent NuGet Package
-- **Source Files**: 6
 
 ## Related Packages
 
@@ -42,4 +40,4 @@ This package is part of the Sunamo package ecosystem. For more information about
 
 ## License
 
-See the repository root for license information.
+MIT - See the repository root for license information.

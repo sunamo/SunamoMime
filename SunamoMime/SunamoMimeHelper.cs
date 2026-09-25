@@ -1,14 +1,26 @@
 namespace SunamoMime;
 
+/// <summary>
+/// Helper class for determining MIME types and file formats from byte arrays.
+/// </summary>
 public class SunamoMimeHelper
 {
     private static readonly Dictionary<string, List<byte>> mimeSignatures = new();
 
+    /// <summary>
+    /// Initializes known MIME type signatures.
+    /// Currently supports: WEBP format.
+    /// </summary>
     public static void Init()
     {
         mimeSignatures.Add("webp", new List<byte>(new byte[] { 82, 73, 70, 70 }));
     }
 
+    /// <summary>
+    /// Determines the file type from a byte array by analyzing file signatures.
+    /// </summary>
+    /// <param name="array">The byte array containing file data to analyze.</param>
+    /// <returns>The file extension corresponding to the detected file format.</returns>
     public static string FileType(byte[] array)
     {
         var firstFourBytes = array.Take(4);

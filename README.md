@@ -1,5 +1,10 @@
 # SunamoMime
 
+## Short description
+
+Knihovna pro zjištění typu MIME a formátu souboru z pole bajtů podle signatur. Obsahuje Runner a testy.
+
+
 A .NET library for determining MIME types and file formats from byte arrays.
 
 ## Overview

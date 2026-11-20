@@ -1,14 +1,25 @@
 namespace SunamoMime;
 
+/// <summary>
+/// Represents the sunamo mime helper type.
+/// </summary>
 public class SunamoMimeHelper
 {
     private static readonly Dictionary<string, List<byte>> mimeSignatures = new();
 
+    /// <summary>
+    /// Init.
+    /// </summary>
     public static void Init()
     {
         mimeSignatures.Add("webp", new List<byte>(new byte[] { 82, 73, 70, 70 }));
     }
 
+    /// <summary>
+    /// File type.
+    /// </summary>
+    /// <param name="array">The array.</param>
+    /// <returns>The file type result.</returns>
     public static string FileType(byte[] array)
     {
         var firstFourBytes = array.Take(4);
